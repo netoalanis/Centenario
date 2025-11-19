@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Centenario - Servicio de renta de autos, choferes y transporte ejecutivo">
+    <title>Centenario - Renta de Autos y Transporte</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" role="navigation">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">
+                <i class="bi bi-car-front-fill me-2"></i>Centenario
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar menú de navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-outline-light ms-2" href="login.html">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section" role="banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container text-center text-white">
+                <h1 class="display-3 fw-bold mb-4">Bienvenido a Centenario</h1>
+                <p class="lead mb-5">Tu socio confiable en renta de autos y transporte ejecutivo</p>
+                <a href="login.html" class="btn btn-primary btn-lg" role="button">Iniciar Sesión</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-5" role="region" aria-labelledby="servicios-heading">
+        <div class="container">
+            <h2 id="servicios-heading" class="text-center mb-5">Nuestros Servicios</h2>
+            <div class="row g-4">
+                <!-- Service 1: Car Rentals -->
+                <div class="col-md-4">
+                    <div class="card h-100 text-center shadow">
+                        <div class="card-body">
+                            <div class="service-icon mb-3">
+                                <i class="bi bi-car-front" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="card-title h4">Renta de Autos</h3>
+                            <p class="card-text">
+                                Ofrecemos una amplia flota de vehículos modernos y bien mantenidos para satisfacer 
+                                todas tus necesidades de transporte, desde compactos hasta SUVs de lujo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2: Chauffeur Services -->
+                <div class="col-md-4">
+                    <div class="card h-100 text-center shadow">
+                        <div class="card-body">
+                            <div class="service-icon mb-3">
+                                <i class="bi bi-person-badge" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="card-title h4">Servicio de Chofer</h3>
+                            <p class="card-text">
+                                Choferes profesionales y experimentados a tu disposición para que viajes 
+                                con comodidad y seguridad sin preocuparte por el tráfico o estacionamiento.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3: Executive Transport -->
+                <div class="col-md-4">
+                    <div class="card h-100 text-center shadow">
+                        <div class="card-body">
+                            <div class="service-icon mb-3">
+                                <i class="bi bi-briefcase" aria-hidden="true"></i>
+                            </div>
+                            <h3 class="card-title h4">Transporte Ejecutivo</h3>
+                            <p class="card-text">
+                                Servicio premium de transporte para ejecutivos y empresas. Puntualidad, 
+                                discreción y vehículos de alta gama para tus reuniones y eventos importantes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros" class="py-5 bg-light" role="region" aria-labelledby="nosotros-heading">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 id="nosotros-heading" class="mb-4">Sobre Nosotros</h2>
+                    <h3 class="h5 text-primary">Nuestra Historia</h3>
+                    <p>
+                        Fundada en 1924, Centenario ha sido un líder en la industria de renta de autos y 
+                        transporte ejecutivo por más de 100 años. Comenzamos como una pequeña empresa familiar 
+                        y hemos crecido hasta convertirnos en uno de los proveedores de transporte más confiables 
+                        de la región.
+                    </p>
+                    <h3 class="h5 text-primary mt-4">Nuestra Misión</h3>
+                    <p>
+                        En Centenario, nos comprometemos a proporcionar servicios de transporte excepcionales 
+                        que superen las expectativas de nuestros clientes. Nuestra misión es ofrecer soluciones 
+                        de movilidad seguras, confiables y de alta calidad, mientras mantenemos nuestro compromiso 
+                        con la excelencia en el servicio al cliente y la innovación constante.
+                    </p>
+                    <p>
+                        Valoramos la seguridad, la puntualidad y la satisfacción del cliente por encima de todo, 
+                        y trabajamos continuamente para mejorar nuestros servicios y mantener nuestra flota en 
+                        las mejores condiciones.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800" 
+                         alt="Equipo de Centenario con vehículos de la flota" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="py-5" role="region" aria-labelledby="contacto-heading">
+        <div class="container">
+            <h2 id="contacto-heading" class="text-center mb-5">Contáctanos</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form id="contactForm" class="needs-validation" novalidate role="form" aria-label="Formulario de contacto">
+                        <div class="mb-3">
+                            <label for="nombreContacto" class="form-label">Nombre Completo</label>
+                            <input type="text" class="form-control" id="nombreContacto" name="nombre" 
+                                   required aria-required="true">
+                            <div class="invalid-feedback">
+                                Por favor ingrese su nombre completo.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailContacto" class="form-label">Correo Electrónico</label>
+                            <input type="email" class="form-control" id="emailContacto" name="email" 
+                                   required aria-required="true">
+                            <div class="invalid-feedback">
+                                Por favor ingrese un correo electrónico válido.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="asuntoContacto" class="form-label">Asunto</label>
+                            <input type="text" class="form-control" id="asuntoContacto" name="asunto" 
+                                   required aria-required="true">
+                            <div class="invalid-feedback">
+                                Por favor ingrese el asunto de su mensaje.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensajeContacto" class="form-label">Mensaje</label>
+                            <textarea class="form-control" id="mensajeContacto" name="mensaje" rows="5" 
+                                      required aria-required="true"></textarea>
+                            <div class="invalid-feedback">
+                                Por favor ingrese su mensaje.
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+                        </div>
+                    </form>
+                    <div id="contactSuccess" class="alert alert-success mt-3 d-none" role="alert">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        ¡Gracias por contactarnos! Hemos recibido su mensaje y nos pondremos en contacto pronto.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4" role="contentinfo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Centenario</h5>
+                    <p>Tu socio confiable en transporte desde 1924</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Contacto</h5>
+                    <p class="mb-1">
+                        <i class="bi bi-telephone me-2" aria-hidden="true"></i>
+                        <a href="tel:+525512345678" class="text-white text-decoration-none">+52 55 1234 5678</a>
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-envelope me-2" aria-hidden="true"></i>
+                        <a href="mailto:info@centenario.com" class="text-white text-decoration-none">info@centenario.com</a>
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-geo-alt me-2" aria-hidden="true"></i>
+                        Ciudad de México, México
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Síguenos</h5>
+                    <div class="social-links">
+                        <a href="#" class="text-white me-3" aria-label="Facebook">
+                            <i class="bi bi-facebook fs-4" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" aria-label="Twitter">
+                            <i class="bi bi-twitter fs-4" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-white me-3" aria-label="Instagram">
+                            <i class="bi bi-instagram fs-4" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="text-white" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin fs-4" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3 bg-white">
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Centenario. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>

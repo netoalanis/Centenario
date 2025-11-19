@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Iniciar sesión - Centenario">
+    <title>Iniciar Sesión - Centenario</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card login-card">
+                        <div class="card-body p-5">
+                            <div class="text-center mb-4">
+                                <i class="bi bi-car-front-fill text-primary" style="font-size: 3rem;"></i>
+                                <h1 class="h3 mt-3 mb-2">Centenario</h1>
+                                <p class="text-muted">Iniciar Sesión</p>
+                            </div>
+                            
+                            <form id="loginForm" class="needs-validation" novalidate role="form" aria-label="Formulario de inicio de sesión">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Correo Electrónico</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-envelope" aria-hidden="true"></i>
+                                        </span>
+                                        <input type="email" class="form-control" id="email" name="email" 
+                                               placeholder="usuario@ejemplo.com"
+                                               required aria-required="true" autocomplete="email">
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese un correo electrónico válido.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Contraseña</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock" aria-hidden="true"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password" name="password" 
+                                               placeholder="Ingrese su contraseña"
+                                               required aria-required="true" autocomplete="current-password">
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese su contraseña.
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                                    <span id="errorText"></span>
+                                </div>
+                                
+                                <div class="d-grid mb-3">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar Sesión
+                                    </button>
+                                </div>
+                                
+                                <div class="text-center">
+                                    <a href="index.html" class="text-decoration-none">
+                                        <i class="bi bi-arrow-left me-1"></i>Volver al inicio
+                                    </a>
+                                </div>
+                            </form>
+                            
+                            <hr class="my-4">
+                            
+                            <div class="text-center">
+                                <small class="text-muted">
+                                    <strong>Usuarios de prueba:</strong><br>
+                                    Cliente: client@centenario.com (contraseña: client123)<br>
+                                    Admin: admin@centenario.com (contraseña: admin123)
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/login.js"></script>
+</body>
+</html>

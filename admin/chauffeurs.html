@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choferes - Centenario Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header"><i class="bi bi-car-front-fill me-2"></i>Centenario Admin</div>
+            <ul class="sidebar-nav">
+                <li><a href="dashboard.html"><i class="bi bi-speedometer2"></i>Dashboard</a></li>
+                <li><a href="service-requests.html"><i class="bi bi-clipboard-check"></i>Solicitudes de Servicio</a></li>
+                <li><a href="calendar.html"><i class="bi bi-calendar3"></i>Calendario de Servicios</a></li>
+                <li><a href="clients.html"><i class="bi bi-people"></i>Clientes</a></li>
+                <li><a href="cars.html"><i class="bi bi-car-front"></i>Vehículos</a></li>
+                <li><a href="chauffeurs.html" class="active"><i class="bi bi-person-badge"></i>Choferes</a></li>
+                <li><a href="reports.html"><i class="bi bi-graph-up"></i>Reportes</a></li>
+                <li><a href="catalogs.html"><i class="bi bi-gear"></i>Catálogos</a></li>
+            </ul>
+        </nav>
+        <div class="main-content" id="mainContent">
+            <div class="admin-navbar">
+                <div class="d-flex justify-content-between align-items-center">
+                    <button class="btn btn-link text-dark" id="sidebarToggle"><i class="bi bi-list fs-3"></i></button>
+                    <div class="d-flex align-items-center">
+                        <span class="me-3"><i class="bi bi-person-circle me-1"></i><span id="adminEmail"></span></span>
+                        <button class="btn btn-outline-danger btn-sm" id="logoutBtn"><i class="bi bi-box-arrow-right me-1"></i>Cerrar Sesión</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid px-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Choferes</h1>
+                    <button class="btn btn-primary" onclick="addChauffeur()"><i class="bi bi-plus-circle me-2"></i>Agregar Chofer</button>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="searchInput" placeholder="Buscar por nombre o teléfono...">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="statusFilter">
+                                    <option value="">Todos los estados</option>
+                                    <option value="Disponible">Disponible</option>
+                                    <option value="En Servicio">En Servicio</option>
+                                    <option value="Descanso">Descanso</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <div id="chauffeursTable" class="table-responsive"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Editar Chofer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editForm">
+                        <input type="hidden" id="editId">
+                        <div class="mb-3">
+                            <label for="editName" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="editName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editPhone" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="editPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editLicense" class="form-label">Licencia</label>
+                            <input type="text" class="form-control" id="editLicense" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editExperience" class="form-label">Experiencia</label>
+                            <input type="text" class="form-control" id="editExperience" placeholder="Ej: 10 años" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editStatus" class="form-label">Estado</label>
+                            <select class="form-select" id="editStatus" required>
+                                <option value="Disponible">Disponible</option>
+                                <option value="En Servicio">En Servicio</option>
+                                <option value="Descanso">Descanso</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveEdit">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/admin-common.js"></script>
+    <script src="../js/chauffeurs.js"></script>
+</body>
+</html>
