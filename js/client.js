@@ -36,6 +36,18 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Collect additional contacts data
+        const additionalContacts = [];
+        const contactFields = document.querySelectorAll('.additional-contact-field');
+        contactFields.forEach(group => {
+            const name = group.querySelector('.additional-contact-name').value.trim();
+            const phone = group.querySelector('.additional-contact-phone').value.trim();
+            const address = group.querySelector('.additional-contact-address').value.trim();
+            if (name || phone || address) {
+                additionalContacts.push({ name, phone, address });
+            }
+        });
+
         // Get form data
         const formData = {
             id: Date.now(),
@@ -48,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             destinationLocation: document.getElementById('destinationLocation').value,
             contactName: document.getElementById('contactName').value,
             contactPhone: document.getElementById('contactPhone').value,
+            additionalContacts: additionalContacts,
             notes: document.getElementById('notes').value,
             status: 'Pendiente',
             createdAt: new Date().toISOString()
@@ -63,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset form
         serviceRequestForm.reset();
         serviceRequestForm.classList.remove('was-validated');
+        
+        // Clear additional contacts
+        document.getElementById('additionalContactsContainer').innerHTML = '';
 
         // Reload requests list
         loadServiceRequests();
@@ -72,6 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
             requestSuccess.classList.add('d-none');
         }, 5000);
     });
+
+    // Add contact button event listener
+    document.getElementById('addContactBtn').addEventListener('click', addContactField);
 
     // Load initial requests
     loadServiceRequests();
@@ -168,4 +187,38 @@ function formatDate(dateString) {
     const date = new Date(dateString + 'T00:00:00');
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString('es-MX', options);
+}
+
+function addContactField() {
+    const container = document.getElementById('additionalContactsContainer');
+    
+    const contactDiv = document.createElement('div');
+    contactDiv.className = 'additional-contact-field card mb-2 p-3';
+    contactDiv.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="mb-0"><i class="bi bi-person me-1"></i>Contacto Adicional</h6>
+            <button type="button" class="btn btn-sm btn-outline-danger remove-contact-btn">
+                <i class="bi bi-trash"></i> Eliminar
+            </button>
+        </div>
+        <div class="row g-2">
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm additional-contact-name" placeholder="Nombre del contacto">
+            </div>
+            <div class="col-md-4">
+                <input type="tel" class="form-control form-control-sm additional-contact-phone" placeholder="Teléfono" pattern="[+]?[0-9\\s\\-()]+">
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control form-control-sm additional-contact-address" placeholder="Dirección">
+            </div>
+        </div>
+    `;
+    
+    container.appendChild(contactDiv);
+    
+    // Add event listener to the remove button
+    const removeBtn = contactDiv.querySelector('.remove-contact-btn');
+    removeBtn.addEventListener('click', function() {
+        contactDiv.remove();
+    });
 }
