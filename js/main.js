@@ -171,6 +171,15 @@ const Auth = {
             };
             Storage.set('currentUser', user);
             return { success: true, user: user };
+        } else if (email === 'chofer@centenario.com' && password === 'chofer123') {
+            const user = {
+                email: email,
+                role: 'chauffeur',
+                name: 'Carlos Gómez',
+                chauffeurId: 1
+            };
+            Storage.set('currentUser', user);
+            return { success: true, user: user };
         } else {
             return { success: false, message: 'Credenciales incorrectas' };
         }

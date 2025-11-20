@@ -84,6 +84,8 @@ function redirectUser(role) {
         window.location.href = 'admin/dashboard.html';
     } else if (role === 'client') {
         window.location.href = 'client/area.html';
+    } else if (role === 'chauffeur') {
+        window.location.href = 'chauffeur/area.html';
     } else {
         window.location.href = 'index.html';
     }

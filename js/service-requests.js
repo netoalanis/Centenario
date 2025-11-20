@@ -111,6 +111,9 @@ function renderTable() {
                     </span>
                 </td>
                 <td class="table-actions">
+                    <button class="btn btn-sm btn-info" onclick="viewEventLogs(${request.id})" title="Ver eventos">
+                        <i class="bi bi-clock-history"></i>
+                    </button>
                     <button class="btn btn-sm btn-primary" onclick="viewRequest(${request.id})" title="Ver detalles">
                         <i class="bi bi-eye"></i>
                     </button>
@@ -267,11 +270,24 @@ function saveEdit() {
     
     if (index === -1) return;
     
+    const chauffeurValue = document.getElementById('editChauffeur').value;
+    
     requests[index].status = document.getElementById('editStatus').value;
     requests[index].serviceDate = document.getElementById('editDate').value;
     requests[index].serviceTime = document.getElementById('editTime').value;
     requests[index].car = document.getElementById('editCar').value;
-    requests[index].chauffeur = document.getElementById('editChauffeur').value;
+    requests[index].chauffeur = chauffeurValue;
+    
+    // Assign chauffeur ID for filtering in chauffeur area
+    if (chauffeurValue) {
+        const chauffeurs = Storage.get('chauffeurs') || [];
+        const chauffeur = chauffeurs.find(c => c.name === chauffeurValue);
+        if (chauffeur) {
+            requests[index].assignedChauffeur = chauffeur.id;
+        }
+    } else {
+        requests[index].assignedChauffeur = null;
+    }
     
     Storage.set('serviceRequests', requests);
     
@@ -324,3 +340,109 @@ function formatRequestDate(dateString) {
     const options = { year: 'numeric', month: 'short', day: 'numeric' };
     return date.toLocaleDateString('es-MX', options);
 }
+
+function getServiceTypeName(type) {
+    const types = {
+        'car-rental': 'Renta de Auto',
+        'chauffeur-service': 'Servicio de Chofer',
+        'executive-transport': 'Transporte Ejecutivo'
+    };
+    return types[type] || type;
+}
+
+function getStatusBadgeClass(status) {
+    const classes = {
+        'Pendiente': 'warning',
+        'Confirmado': 'success',
+        'En Proceso': 'info',
+        'Completado': 'primary',
+        'Cancelado': 'danger'
+    };
+    return classes[status] || 'secondary';
+}
+
+function viewEventLogs(serviceId) {
+    const eventLogs = Storage.get('eventLogs') || [];
+    const serviceLogs = eventLogs.filter(log => log.serviceId === serviceId);
+
+    const eventTypeNames = {
+        'picked-up': 'Pasajero Recogido',
+        'dropped-off': 'Pasajero Dejado',
+        'border-cleared': 'Frontera Cruzada',
+        'high-traffic': 'Tráfico Alto',
+        'road-accident': 'Accidente en el Camino',
+        'service-emergency': 'Emergencia del Servicio',
+        'other': 'Otro'
+    };
+
+    const eventIcons = {
+        'picked-up': 'bi-person-check-fill text-success',
+        'dropped-off': 'bi-person-dash-fill text-info',
+        'border-cleared': 'bi-flag-fill text-primary',
+        'high-traffic': 'bi-exclamation-triangle-fill text-warning',
+        'road-accident': 'bi-exclamation-octagon-fill text-danger',
+        'service-emergency': 'bi-lightning-fill text-danger',
+        'other': 'bi-info-circle-fill text-secondary'
+    };
+
+    let content = '';
+    
+    if (serviceLogs.length === 0) {
+        content = `
+            <div class="text-center text-muted py-4">
+                <i class="bi bi-inbox" style="font-size: 3rem;"></i>
+                <p class="mt-2">No hay eventos registrados para este servicio.</p>
+            </div>
+        `;
+    } else {
+        // Sort by timestamp (newest first)
+        serviceLogs.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+        serviceLogs.forEach(log => {
+            const logDate = new Date(log.timestamp);
+            const formattedDate = logDate.toLocaleDateString('es-MX', { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            content += `
+                <div class="card mb-3 border-start border-3 border-${getEventColor(log.eventType)}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h6 class="mb-0">
+                                <i class="bi ${eventIcons[log.eventType] || 'bi-circle-fill'} me-2"></i>
+                                ${eventTypeNames[log.eventType] || log.eventType}
+                            </h6>
+                            <small class="text-muted">${formattedDate}</small>
+                        </div>
+                        <p class="mb-1 text-muted">${log.notes}</p>
+                        <small class="text-muted">
+                            <i class="bi bi-person me-1"></i>Registrado por: ${log.chauffeurEmail || 'Sistema'}
+                        </small>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    document.getElementById('eventLogsContent').innerHTML = content;
+    const modal = new bootstrap.Modal(document.getElementById('eventLogsModal'));
+    modal.show();
+}
+
+function getEventColor(eventType) {
+    const colors = {
+        'picked-up': 'success',
+        'dropped-off': 'info',
+        'border-cleared': 'primary',
+        'high-traffic': 'warning',
+        'road-accident': 'danger',
+        'service-emergency': 'danger',
+        'other': 'secondary'
+    };
+    return colors[eventType] || 'secondary';
+}
+

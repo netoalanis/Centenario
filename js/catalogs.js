@@ -8,7 +8,16 @@ const catalogDefaults = {
     countries: ['México', 'Estados Unidos', 'Canadá'],
     cities: ['Ciudad de México', 'Guadalajara', 'Monterrey', 'Puebla', 'Querétaro', 'Cancún'],
     users: ['admin@rentalcar.com', 'client@rentalcar.com'],
-    roles: ['Administrador', 'Cliente', 'Chofer', 'Supervisor']
+    roles: ['Administrador', 'Cliente', 'Chofer', 'Supervisor'],
+    eventLogTypes: [
+        'Pasajero Recogido',
+        'Pasajero Dejado',
+        'Frontera Cruzada',
+        'Tráfico Alto',
+        'Accidente en el Camino',
+        'Emergencia del Servicio',
+        'Otro'
+    ]
 };
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -36,6 +45,7 @@ function loadAllCatalogs() {
     loadCatalog('cities', 'citiesList');
     loadCatalog('users', 'usersList');
     loadCatalog('roles', 'rolesList');
+    loadCatalog('eventLogTypes', 'eventLogTypesList');
 }
 
 function loadCatalog(catalogType, listId) {
